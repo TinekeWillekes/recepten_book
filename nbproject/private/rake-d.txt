@@ -3,6 +3,7 @@ assets\:clean[keep]=Remove old compiled assets
 assets\:clobber=Remove compiled assets
 assets\:environment=Load asset compile environment
 assets\:precompile=Compile all the assets named in config.assets.precompile
+autoprefixer\:info=Show selected browsers and prefixed CSS properties and values
 cache_digests\:dependencies=Lookup first-level dependencies for TEMPLATE (like messages/show or comments/_comment.html)
 cache_digests\:nested_dependencies=Lookup nested dependencies for TEMPLATE (like messages/show or comments/_comment.html)
 db\:_dump=
@@ -44,6 +45,7 @@ db\:test\:load_structure=
 db\:test\:prepare=
 db\:test\:purge=
 db\:version=Retrieves the current schema version number
+default=
 doc=
 doc/app=
 doc/app/index.html=
@@ -60,6 +62,7 @@ html=
 html/index.html=
 log\:clear=Truncates all *.log files in log/ to zero bytes (specify which logs with LOGS=test,development)
 middleware=Prints out your Rack middleware stack
+noop=
 notes=Enumerate all annotations (use notes:optimize, :fixme, :todo for focus)
 notes\:custom=Enumerate a custom annotation, specify with ANNOTATION=CUSTOM
 notes\:fixme=
@@ -74,6 +77,9 @@ rails\:update\:configs=
 railties\:install\:migrations=
 routes=Print out all defined routes in match order, with names. Target specific controller with CONTROLLER=x.
 secret=Generate a cryptographically secure secret key (this is typically used to generate a secret for cookie sessions).
+spec=Run all specs in spec directory (excluding plugin specs)
+spec\:requests=Run the code examples in spec/requests
+spec\:statsetup=
 stats=Report code statistics (KLOCs, etc) from the application
 test\:prepare=
 time\:zones\:all=Displays all time zones, also available: time:zones:us, time:zones:local -- filter with OFFSET parameter, e.g., OFFSET=-6
