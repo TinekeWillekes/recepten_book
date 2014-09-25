@@ -1,9 +1,8 @@
-== README
+* Recepten kookboek Frits Willekes
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is an application for creating your own recipes book.
 
-Things you may want to cover:
+
 
 * Ruby version
 
