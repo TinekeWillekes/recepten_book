@@ -12,6 +12,7 @@
  *= require_tree .
  *= require bootstrap.min
  *= require bootstrap
+ *= require devise_bootstrap_views
  */
 
     /* Header
@@ -29,12 +30,17 @@
   
 }
 
+    /* Notice and alert
+-------------------------------------------------- */
+.notice-alert {
+  margin: 15px;
+}
+
     /* Home page
 -------------------------------------------------- */
 .home-page {
   text-align: center;
 }
-
 
     /* Sticky footer styles
 -------------------------------------------------- */
