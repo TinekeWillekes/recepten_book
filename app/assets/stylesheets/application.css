@@ -26,14 +26,14 @@
   letter-spacing: -1px;
   font-weight: bold;
   line-height: 1;
-  text-decoration: none;
-  
+  text-decoration: none;  
 }
 
     /* Notice and alert
 -------------------------------------------------- */
-.notice-alert {
-  margin: 15px;
+.bg-danger {
+    padding: 15px;
+    border-radius: 4px;
 }
 
     /* Home page

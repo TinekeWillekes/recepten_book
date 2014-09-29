@@ -13,6 +13,7 @@ Bundler.require(*Rails.groups)
 
 module ReceptenBoek
   class Application < Rails::Application
+    config.action_view.field_error_proc = Proc.new { |html_tag, instance| html_tag }
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
@@ -24,6 +25,7 @@ module ReceptenBoek
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
+    config.assets.paths << "#{Rails}/vendor/assets/fonts"
     config.assets.precompile += %w(*.png *.jpg *.jpeg *.gif)
   end
 end

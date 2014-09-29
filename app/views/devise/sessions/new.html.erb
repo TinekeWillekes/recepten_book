@@ -6,14 +6,15 @@
       </div>
       <div class="panel-body">
         <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { role: "form" }) do |f| %>
-          <div class="form-group">
-            <%= f.label :email %>
+          <div class="form-group<%= alert ? " has-error" : "" %>">
+            <%= f.label :email, class: "control-label" %>
             <%= f.email_field :email, autofocus: true, class: "form-control" %>
           </div>
-          <div class="form-group">
-            <%= f.label :password %>
-            <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
+          <div class="form-group<%= alert ? " has-error" : "" %>">
+            <%= f.label :password, class: "control-label" %>
+            <%= f.password_field :password, autocomplete: "off", class: "form-control" %>  
           </div>
+          <%= content_tag(:div, flash[:alert], :class => "bg-danger") if flash[:alert] %>
           <% if devise_mapping.rememberable? %>
             <div class="checkbox">
               <label>
