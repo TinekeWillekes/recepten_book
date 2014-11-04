@@ -2,7 +2,7 @@ ReceptenBoek::Application.routes.draw do
   devise_for :users
     devise_scope :user do
       authenticated :user do
-          root 'recipes', as: :authenticated_root
+          root 'recipes#index', as: :authenticated_root
       end
 
       unauthenticated do
@@ -10,10 +10,18 @@ ReceptenBoek::Application.routes.draw do
       end
     end
 
-  root  'static_pages#home'
+  get '/recipes/:id/deactivate' => 'recipes#deactivate'
+  get '/recipes/:id/activate' => 'recipes#activate'
+  
+  resources :recipes
+  resources :books
+  resources :categories do
+    post :update_row_order, on: :collection
+  end
+  
   match '/about',   to: 'static_pages#about',   via: 'get'
   match '/contact', to: 'static_pages#contact', via: 'get'
-  
+  root :to => redirect("static_pages#home")
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -1,0 +1,50 @@
+<div class="row">
+  <div class="col-md-6 col-md-offset-1"><h1>Recipes overview</h1></div>
+    <div class="col-md-4">
+      <div class="button-right">
+      <%= link_to "New recipe", new_recipe_path,
+                                class: "btn btn-primary"%>
+      </div> 
+    </div>
+</div>
+<br />
+<div class="row">
+  <div class="col-md-10 col-md-offset-1">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        Recipes list
+        <%= form_tag recipes_path, method: :get, id: "search-form", class: "navbar-search pull-right" do %>
+          <%= text_field_tag :search, params[:search], placeholder: "Search Recipes" %>
+        <% end %>   
+      </div>
+      
+      <table class="table table-striped table-bordered table-condensed table-hover">
+         <tr>
+           <th width="400"><%= sortable "title", "Title" %></th>
+           <th width="150"><%= sortable "category_id", "Category" %></th>
+             <th><%= sortable "number_of_persons", image_tag("icons/personen.png", size: "40") %></th>
+             <th><%= sortable "cooking_time", image_tag("icons/tijd.png", size: "40") %></th>
+             <th>Actions</th>
+         </tr>
+         <% @recipes.each do |recipe| %>
+         <tr>
+           <td><%= link_to recipe.title, recipe %></td>
+           <td><%= recipe.category.name if recipe.category.name? %>
+           <td><%= recipe.number_of_persons %> personen</td>
+           <td><%= recipe.cooking_time %> minuten</td>
+           <td><%= link_to("", edit_recipe_path(:id => recipe.id), class: "glyphicon glyphicon-pencil") %>
+               <%= link_to_if(recipe.active == 1, "", { id: recipe.id, action: "deactivate" }, class: "glyphicon glyphicon-eye-open") do
+                   link_to("", { id: recipe.id, action: "activate" }, class: "glyphicon glyphicon-eye-close" )
+               end %>
+               <%=  link_to "", recipe_path(@recipe, :id => recipe.id, :format => :pdf), class: "glyphicon glyphicon-download" %>
+               <%= link_to "", recipe, method: :delete,
+                                       data: { confirm: "You sure?" }, class: "glyphicon glyphicon-remove" %>
+           </td>
+         </tr> 
+         <% end %>
+       </table>
+     </div>
+    
+   </div>
+</div>
+<%= will_paginate @recipes %>

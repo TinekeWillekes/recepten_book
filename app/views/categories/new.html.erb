@@ -1,0 +1,29 @@
+<div class="row">
+  <div class="col-md-5">
+    <p><%= back_to(:categories) %></p>
+  </div>
+  <div class="col-md-7">
+    <h1>New category</h1>
+  </div>
+</div>
+  
+<div class="row">
+  <div class="col-md-3"></div>
+  <div class="col-md-6">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4>New Category</h4>
+      </div>
+      <div class="panel-body"> 
+          <%= bootstrap_form_for(@category, :html => {:class => "form-horizontal"}) do |f| %>
+            <div class="col-md-12">
+              <%= f.text_field :name %>
+              <div class="button-right">
+                <%= f.submit "Create new category", class: "btn btn-primary" %>
+              </div>
+            </div>
+          <% end %>     
+      </div>
+    </div>
+  </div>
+</div>

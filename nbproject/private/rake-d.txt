@@ -67,6 +67,11 @@ notes\:custom=Enumerate a custom annotation, specify with ANNOTATION=CUSTOM
 notes\:fixme=
 notes\:optimize=
 notes\:todo=
+paperclip\:clean=Cleans out invalid attachments. Useful after you've added new validations.
+paperclip\:refresh=Refreshes both metadata and thumbnails.
+paperclip\:refresh\:metadata=Regenerates content_type/size metadata for a given CLASS (and optional ATTACHMENT).
+paperclip\:refresh\:missing_styles=Regenerates missing thumbnail styles for all classes using Paperclip.
+paperclip\:refresh\:thumbnails=Regenerates thumbnails for a given CLASS (and optional ATTACHMENT and STYLES splitted by comma).
 rails\:template=Applies the template supplied by LOCATION=(/path/to/template) or URL
 rails\:templates\:copy=
 rails\:update=Update configs and some other initially generated files (or use just update:configs, update:bin, or update:application_controller)
@@ -77,6 +82,8 @@ railties\:install\:migrations=
 routes=Print out all defined routes in match order, with names. Target specific controller with CONTROLLER=x.
 secret=Generate a cryptographically secure secret key (this is typically used to generate a secret for cookie sessions).
 spec=Run all specs in spec directory (excluding plugin specs)
+spec\:controllers=Run the code examples in spec/controllers
+spec\:helpers=Run the code examples in spec/helpers
 spec\:models=Run the code examples in spec/models
 spec\:requests=Run the code examples in spec/requests
 spec\:statsetup=

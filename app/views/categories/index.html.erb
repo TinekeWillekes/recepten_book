@@ -1,0 +1,39 @@
+<div class="row">
+  <div class="col-md-6 col-md-offset-1"><h1>Catergories overview</h1></div>
+    <div class="col-md-4">
+      <div class="button-right">
+        <%= link_to "New category", new_category_path,
+                                    class: "btn btn-primary" %>
+      </div>
+    </div>
+</div>
+<br />
+<div class="row">
+  <div class="col-md-10 col-md-offset-1">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        Categories list
+        <%= form_tag categories_path, method: :get, id: "search-form", class: "navbar-search pull-right" do %>
+          <%= text_field_tag :search, params[:search], placeholder: "Search Category" %>
+        <% end %>
+      </div>
+      <table class="table table-striped table-bordered table-condensed table-hover" id="sortable">
+         <tr>
+           <th><%= sortable "name", "Name" %></th>
+           <th>Actions</th>
+         </tr>
+         <% @categories.each do |category| %>
+         <tr data-item-id=<%= "#{category.id}" %> class="item">
+           <td><%= category.name %></td>
+           <td><%= link_to("", edit_category_path(:id => category.id), class: "glyphicon glyphicon-pencil") %>
+             <%= link_to "", category, method: :delete,
+                                       data: { confirm: "You sure?" }, class: "glyphicon glyphicon-remove" %>
+           </td>
+         </tr> 
+         <% end %>
+       </table>
+     </div>
+    <%= will_paginate @categories %>
+   </div>
+</div>
+

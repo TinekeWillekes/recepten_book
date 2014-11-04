@@ -1,0 +1,51 @@
+<div class="row">
+  <div class="col-md-5">
+    <p><%= back_to(:recipes) %></p>
+  </div>
+  <div class="col-md-7">
+    <h1>Update recipe</h1>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-3"></div>
+  <div class="col-md-6">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4>New recipe</h4>
+      </div>
+      <div class="panel-body">
+        <%= bootstrap_form_for(@recipe, :html => {:class => "form-horizontal"}) do |f| %>
+          <div class="col-md-12">
+            <div class="form-group">
+              <%= collection_select(:recipe, :category_id, Category.all, :id, :name, {prompt: "Select a category"}, {class: "form-control"} ) %>
+            </div>
+          
+            <%= f.text_field :title %>
+            <%= f.text_field :number_of_persons %>
+            <%= f.text_field :cooking_time, placeholder: "in minutes"  %>
+            <%= f.text_area :directions %>
+            <%= f.text_area :tip %>
+            <%= f.text_area :history %>
+            <%= f.file_field :recipe_image, class: "form-control" %>
+
+          <p><strong>Type the list of all the necessary ingredients here:</strong></p>
+          <fieldset id="recipe-ingredients"> 
+            <ol>
+                <%= f.fields_for :quantities do |quantity| %>
+                  <%= render 'quantity_fields', f: quantity %> 
+                <% end %> 
+            </ol> 
+            <%= link_to_add_association 'add ingredient', f, :quantities, 'data-association-insertion-node' => "#recipe-ingredients ol", 'data-association-insertion-method' => "append", :wrap_object => Proc.new {|quantity| quantity.build_ingredient; quantity }, class: "btn btn-success" %> 
+          </fieldset> 
+
+          <div class="button-right">
+            <%= f.submit "Update recipe", class: "btn btn-primary" %>
+          </div>
+        <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  <div class="col-md-3"></div>
+</div>

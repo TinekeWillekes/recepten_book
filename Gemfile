@@ -21,6 +21,17 @@ gem 'turbolinks', '1.1.1'
 gem 'jbuilder', '1.0.2'
 gem 'devise'
 gem 'devise-bootstrap-views'
+gem 'bootstrap-will_paginate'
+gem "cocoon"
+gem "paperclip", "~> 4.2"
+gem 'will_paginate'
+gem 'bootstrap_form'
+
+gem 'wicked_pdf'
+gem 'wkhtmltopdf-binary'
+
+gem 'ranked-model'
+gem 'jquery-ui-rails'
 
 group :doc do
   gem 'sdoc', '0.3.20', require: false

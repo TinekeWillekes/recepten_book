@@ -14,9 +14,19 @@
   <body>
     <%= render 'layouts/header' %>
     <div class="container">
-    <%= render 'layouts/user_widget' %>
-    
+      <% flash.each do |name, msg| %>
+        <% if msg.is_a?(String) %>
+          <%= content_tag :div, msg, :class => "bg-danger" %>
+        <% end %>
+      <% end %>
+    <% if notice %>
       <div class="bg-success"><%= notice %></div>
+    <% elsif alert %>
+      <div class="bg-alert"><%= alert %></div>
+    <% else %>
+      
+    <% end %>
+      
           <%= yield %>
 
     </div>

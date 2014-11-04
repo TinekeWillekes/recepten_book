@@ -13,6 +13,7 @@
  *= require bootstrap.min
  *= require bootstrap
  *= require devise_bootstrap_views
+ *= require rails_bootstrap_forms
  */
 
     /* Header
@@ -36,22 +37,122 @@
     border-radius: 4px;
 }
 
+.bg-success {
+    padding: 15px;
+    border-radius: 4px;
+}
+
     /* Home page
 -------------------------------------------------- */
 .home-page {
   text-align: center;
+  
 }
 
+img.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: -48.5px;
+    
+    background-image: -webkit-gradient(
+	linear,
+	left top,
+	left bottom,
+	color-stop(0, #FF9100),
+	color-stop(1, #FF9100)
+);
+background-image: -o-linear-gradient(bottom, #FF9100 0%, #FF9100 100%);
+background-image: -moz-linear-gradient(bottom, #FF9100 0%, #FF9100 100%);
+background-image: -webkit-linear-gradient(bottom, #FF9100 0%, #FF9100 100%);
+background-image: -ms-linear-gradient(bottom, #FF9100 0%, #FF9100 100%);
+background-image: linear-gradient(to bottom, #FF9100 0%, #FF9100 100%); 
+}
+.jumbotron {
+  background-image: -webkit-gradient(
+	linear,
+	left top,
+	left bottom,
+	color-stop(0, #FF9100),
+	color-stop(1, #FF9100)
+);
+background-image: -o-linear-gradient(bottom, #FF9100 0%, #FF9100 100%);
+background-image: -moz-linear-gradient(bottom, #FF9100 0%, #FF9100 100%);
+background-image: -webkit-linear-gradient(bottom, #FF9100 0%, #FF9100 100%);
+background-image: -ms-linear-gradient(bottom, #FF9100 0%, #FF9100 100%);
+background-image: linear-gradient(to bottom, #FF9100 0%, #FF9100 100%);    
+}
+
+    /* Buttons
+-------------------------------------------------- */    
+.button-right {
+   float: right;
+   margin-top: 30px;
+}
+
+/* Show page recipes
+-------------------------------------------------- */   
+.background-paper {
+    background-image: url("show_recipes/background-paper.png");
+    background-repeat: no-repeat; 
+    height: 420px;
+    
+}
+
+.show-image {
+}
+
+.show-divider {
+  text-align: center;  
+}
+
+.list-ingredients {
+    padding-top: 35px;
+    padding-left: 70px;
+}
+
+.background-divider {
+    height: 10px;
+    width: 100%;
+    background-image: linear-gradient(to left, #E69025, #E69025 50%, #F5EB19 50%);
+    background-attachment:fixed;
+    background-repeat: no-repeat;
+}
+
+.background-tekst {
+    height: 400px;
+    width: 100%;
+    background-image: linear-gradient(to right, #E69025, #E69025 50%, #F5EB19 50%);
+    background-attachment:fixed;
+    background-repeat: no-repeat;
+}
+
+.history {
+    
+}
+
+.directions {
+    
+}
+    
     /* Sticky footer styles
 -------------------------------------------------- */
 html {
   position: relative;
   min-height: 100%;
 }
+
 body {
-  /* Margin bottom by footer height */
-  margin-bottom: 60px;
+   padding:0;
+   height:100%;
+   padding-bottom:60px;   /* Height of the footer */
 }
+
+.container {
+   min-height:100%;
+   position:relative;
+}
+
 .footer {
   position: absolute;
   bottom: 0;

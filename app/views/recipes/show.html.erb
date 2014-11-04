@@ -1,0 +1,54 @@
+<div class="row">
+  <div class="col-md-12">
+    <p><%= back_to(:recipes) %></p>
+  </div>
+  <div class="col-md-12">
+    <h2 align="center"><%= @recipe.title %></h2>
+    <div class="show-divider">
+      <%= image_tag("show_recipes/divider.png") %><br /><br />
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-6">
+    <div class="show-image">
+      <%= image_tag(@recipe.recipe_image.url, size: "570x450") %>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="col-md-4">
+      <%= image_tag("icons/personen.png", size: "60") %><%= @recipe.number_of_persons %> pers.<br /><br /><br />
+      <%= image_tag("icons/tijd.png", size: "60") %><%= @recipe.cooking_time %> min.<br /><br /><br />
+      <%= image_tag("icons/tip.png", size: "60") %>Tip:<br />
+      <%= @recipe.tip %>
+    </div>
+    <div class="col-md-8">
+      <div class="background-paper">
+        <div class="list-ingredients">
+          <h4>Boodschappenlijst:</h4>
+            <% @list_of_ingredients.each do |i| %>
+            <li><%= i.amount %> <%= i.ingredient.name %></li>
+            <% end %>
+        </div>
+      </div>
+    </div>  
+  </div>
+  <div class="col-md-12">
+    <div class="background-divider"></div>
+    <div class="background-tekst">
+      <div class="col-md-6">
+        <div class="history">
+          <h4>Historie van het recept:</h4>
+            <%= @recipe.history %>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="directions">
+          <h4>Bereidingswijze:</h4>
+            <%= @recipe.directions %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
