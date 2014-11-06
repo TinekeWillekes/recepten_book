@@ -11,7 +11,8 @@ ReceptenBoek::Application.routes.draw do
     end
 
   get '/recipes/:id/deactivate' => 'recipes#deactivate'
-  get '/recipes/:id/activate' => 'recipes#activate'
+  get '/recipes/:id/activate'   => 'recipes#activate'
+  get '/recipes/download/:id'   => 'recipes#download'
   
   resources :recipes
   resources :books

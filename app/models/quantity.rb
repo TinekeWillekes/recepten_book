@@ -3,5 +3,7 @@ class Quantity < ActiveRecord::Base
   belongs_to :ingredient
  
   accepts_nested_attributes_for :ingredient, 
-                                :reject_if => :all_blank
+                                :reject_if => :all_blank,
+                                :allow_destroy => true
+
 end

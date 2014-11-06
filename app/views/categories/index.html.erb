@@ -19,7 +19,7 @@
       </div>
       <table class="table table-striped table-bordered table-condensed table-hover" id="sortable">
          <tr>
-           <th><%= sortable "name", "Name" %></th>
+           <th>Name</th>
            <th>Actions</th>
          </tr>
          <% @categories.each do |category| %>
@@ -33,7 +33,10 @@
          <% end %>
        </table>
      </div>
-    <%= will_paginate @categories %>
+    <div class="button-right">
+        <%= link_to "Save order", method: :update_row_order
+                                     %>
+      </div>
    </div>
 </div>
 

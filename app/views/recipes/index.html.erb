@@ -36,7 +36,7 @@
                <%= link_to_if(recipe.active == 1, "", { id: recipe.id, action: "deactivate" }, class: "glyphicon glyphicon-eye-open") do
                    link_to("", { id: recipe.id, action: "activate" }, class: "glyphicon glyphicon-eye-close" )
                end %>
-               <%=  link_to "", recipe_path(@recipe, :id => recipe.id, :format => :pdf), class: "glyphicon glyphicon-download" %>
+               <%=  link_to("", { id: recipe.id, action: "download", :format => "pdf" } , class: "glyphicon glyphicon-download") %>
                <%= link_to "", recipe, method: :delete,
                                        data: { confirm: "You sure?" }, class: "glyphicon glyphicon-remove" %>
            </td>

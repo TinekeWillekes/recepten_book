@@ -1,15 +1,13 @@
 class CategoriesController < ApplicationController
   before_action :authenticate_user!
-  helper_method :sort_column, :sort_direction
   
   def index
     if params[:search]
       @categories = current_user.categories.search(params[:search])
-                                   .paginate(page: params[:page])
-                                   .order(sort_column + " " + sort_direction)
+
     else
       @categories = current_user.categories.paginate(page: params[:page])
-                                .order(sort_column + " " + sort_direction)
+
     end
   end
 
@@ -52,7 +50,7 @@ class CategoriesController < ApplicationController
     @category = Category.find(category_params[:id])
     @category.row_order_position = category_params[:row_order_position]
     @category.save
-
+    
     render nothing: true # this is a POST action, updates sent via AJAX, no view rendered
   end
 
@@ -67,12 +65,5 @@ class CategoriesController < ApplicationController
   def set_category
     @category = Category.find(params[:id])
   end
-  
-  def sort_column
-    Recipe.column_names.include?(params[:sort]) ? params[:sort] : "name"
-  end
-  
-  def sort_direction
-    %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
-  end
+
 end

@@ -27,7 +27,7 @@ gem "paperclip", "~> 4.2"
 gem 'will_paginate'
 gem 'bootstrap_form'
 
-gem 'wicked_pdf'
+gem 'pdfkit'
 gem 'wkhtmltopdf-binary'
 
 gem 'ranked-model'

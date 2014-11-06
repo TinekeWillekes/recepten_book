@@ -28,7 +28,7 @@ class RecipesController < ApplicationController
       flash[:success] = "Added new recipe"
       redirect_to recipes_path
     else
-      flash.now[:error] = "Make sure you filled out all the forms."
+      flash.now[:alert] = "Make sure you filled out all the forms."
       render "new"
     end
   end
@@ -64,6 +64,21 @@ class RecipesController < ApplicationController
 		@recipe.update_attributes({:active => 0})
 		redirect_to recipes_path
 	end
+  
+  def download
+    @recipe = current_user.recipes.find(params[:id])
+    @list_of_ingredients = @recipe.quantities.to_a
+    # Load the html to convert to PDF
+    html = File.read("#{Rails.root}/app/views/recipes/show.html.erb")
+    # Create a new kit and define page size to be US letter
+    kit = PDFKit.new(html, :page_size => 'Letter')
+    # Load our stylesheet into the kit to have colors & formatting
+    kit.stylesheets << "#{Rails.root}/app/assets/stylesheets/application.css"
+    # Save the html to a PDF file
+    # kit.to_file("#{Rails.root}/public/example.pdf")
+    # Render the html
+    render :text => html
+  end
   
   private
 

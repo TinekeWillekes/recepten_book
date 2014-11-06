@@ -2,10 +2,10 @@ class Recipe < ActiveRecord::Base
   belongs_to :user
   belongs_to :category
   
-  has_many :quantities
-  has_many :ingredients, 
+  has_many :ingredients,
            :through => :quantities
- 
+  has_many :quantities, dependent: :destroy
+  
   accepts_nested_attributes_for :quantities, 
            :reject_if => :all_blank, 
            :allow_destroy => true

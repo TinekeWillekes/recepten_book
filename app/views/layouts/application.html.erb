@@ -14,17 +14,13 @@
   <body>
     <%= render 'layouts/header' %>
     <div class="container">
-      <% flash.each do |name, msg| %>
-        <% if msg.is_a?(String) %>
-          <%= content_tag :div, msg, :class => "bg-danger" %>
-        <% end %>
-      <% end %>
-    <% if notice %>
+    <% if flash[:success] %>
+      <div class="bg-success"><%= flash[:success] %></div>
+    <% elsif flash[:alert] %>
+      <div class="bg-danger"><%= flash[:alert] %></div>
+    <% elsif notice %>
       <div class="bg-success"><%= notice %></div>
-    <% elsif alert %>
-      <div class="bg-alert"><%= alert %></div>
     <% else %>
-      
     <% end %>
       
           <%= yield %>
