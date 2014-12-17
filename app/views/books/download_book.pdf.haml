@@ -1,0 +1,44 @@
+- @categories.each do |c|
+  %h1= c.name
+  %p{ :style => 'page-break-after:always;'}
+    - c.recipes.each do |r|
+      %h2= r.title
+      .show-divider
+        %br
+        %br
+      .top-elements
+        #show-image
+        = wicked_pdf_image_tag(r.recipe_image.url, size: "470x350")
+        #background-paper
+          .list-ingredients
+            #header-text
+              Boodschappenlijst:
+            - r.quantities.each do |i| 
+              %li
+                = i.amount 
+                = i.ingredient.name 
+        #info
+          = wicked_pdf_image_tag("icons/personen.png", size: "60")
+          #{r.number_of_persons} pers.  
+          %br
+          %br
+          %br
+          = wicked_pdf_image_tag("icons/tijd.png", size: "60")
+          #{r.cooking_time} min.
+          %br
+          %br
+          %br
+          = wicked_pdf_image_tag("icons/tip.png", size: "60")
+          Tip:
+          %br
+          = r.tip
+      .background-coloring
+        .background-tekst
+          #header-text Historie van het recept:
+          %p 
+            = r.history
+          %br 
+          #header-text Bereidingswijze:
+          %p 
+            = r.directions
+          %p{ :style => 'page-break-after:always;'}

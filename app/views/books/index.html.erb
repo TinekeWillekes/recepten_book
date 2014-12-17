@@ -1,9 +1,9 @@
 <div class="row">
-  <div class="col-md-6 col-md-offset-1"><h1>Book overview</h1></div>
+  <div class="col-md-6 col-md-offset-1"><div id="head-title">Book overview</div></div>
     <div class="col-md-4">
       <div class="button-right">
-        <%= link_to "Download PDF", "#",
-                                    class: "btn btn-primary" %>
+        <%= link_to( "Download PDF", { action: "download_book", :format => "pdf" } ,
+                                    class: "btn btn-primary" ) %>
       </div>
     </div>
 </div>

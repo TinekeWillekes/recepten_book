@@ -3,10 +3,10 @@ class CategoriesController < ApplicationController
   
   def index
     if params[:search]
-      @categories = current_user.categories.search(params[:search])
+      @categories = current_user.categories.rank(:row_order).search(params[:search])
 
     else
-      @categories = current_user.categories.paginate(page: params[:page])
+      @categories = current_user.categories.rank(:row_order).paginate(page: params[:page])
 
     end
   end
@@ -49,9 +49,8 @@ class CategoriesController < ApplicationController
   def update_row_order
     @category = Category.find(category_params[:id])
     @category.row_order_position = category_params[:row_order_position]
-    @category.save
-    
-    render nothing: true # this is a POST action, updates sent via AJAX, no view rendered
+    @category.update_attributes(category_params)
+      render nothing: true 
   end
 
   

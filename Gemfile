@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+source 'http://rubygems.org'
 ruby '2.0.0'
 
 gem 'rails', '4.0.8'
@@ -27,8 +27,9 @@ gem "paperclip", "~> 4.2"
 gem 'will_paginate'
 gem 'bootstrap_form'
 
-gem 'pdfkit'
+gem 'wicked_pdf', github: 'mileszs/wicked_pdf'
 gem 'wkhtmltopdf-binary'
+gem 'haml'
 
 gem 'ranked-model'
 gem 'jquery-ui-rails'

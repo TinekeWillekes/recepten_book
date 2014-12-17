@@ -27,7 +27,6 @@ module ReceptenBoek
     # config.i18n.default_locale = :de
     config.secret_token = '6f22fa632e18b338b4babfa5fca632f5454fc97317cb52f372fa0f0fdd7f4d5bd95a060ff412c7230627b5c17906c9762c09208624bc1ab97f8d5344d8d4f467'  
     config.filter_parameters << :password  
-    config.middleware.use "PDFKit::Middleware"
     config.assets.precompile += %w(*.png *.jpg *.jpeg *.gif)
   end
 end

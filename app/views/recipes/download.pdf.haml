@@ -1,0 +1,39 @@
+%h2= @recipe.title
+.show-divider
+  %br
+  %br
+.top-elements
+  #show-image
+  = wicked_pdf_image_tag(@recipe.recipe_image.url, size: "470x350")
+  #background-paper
+    .list-ingredients
+      %h4
+        Boodschappenlijst:
+      - @list_of_ingredients.each do |i| 
+        %li
+          = i.amount 
+          = i.ingredient.name 
+  #info
+    = wicked_pdf_image_tag("icons/personen.png", size: "60")
+    #{@recipe.number_of_persons} pers.  
+    %br
+    %br
+    %br
+    = wicked_pdf_image_tag("icons/tijd.png", size: "60")
+    #{@recipe.cooking_time} min.
+    %br
+    %br
+    %br
+    = wicked_pdf_image_tag("icons/tip.png", size: "60")
+    Tip:
+    %br
+    = @recipe.tip
+.background-coloring
+  .background-tekst
+    %h4 Historie van het recept:
+    %p 
+      = @recipe.history
+    %br 
+    %h4 Bereidingswijze:
+    %p 
+      = @recipe.directions
