@@ -52,15 +52,14 @@ class CategoriesController < ApplicationController
     @category.update_attributes(category_params)
       render nothing: true 
   end
-
   
   private
 
   def category_params
-    params.require(:category).permit(:id, :name, :user_id, :row_order_position, :_destroy, :name)
+    params.require(:category).permit(:id, :name, :user_id, :row_order, :row_order_position, :_destroy, :name)
   end
   
-    # Use callbacks to share common setup or constraints between actions.
+  # Use callbacks to share common setup or constraints between actions.
   def set_category
     @category = Category.find(params[:id])
   end

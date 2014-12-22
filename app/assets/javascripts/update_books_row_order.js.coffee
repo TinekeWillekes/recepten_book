@@ -1,11 +1,11 @@
 jQuery ->
-  if $('#categories').length > 0
-    table_width = $('#categories').width()
+  if $('#recipes').length > 0
+    table_width = $('#recipes').width()
     cells = $('.table').find('tr')[0].cells.length
     desired_width = table_width / cells + 'px'
     $('.table td').css('width', desired_width)
 
-    $('#categories').sortable(
+    $('#recipes').sortable(
       axis: 'y'
       items: '.item'
       cursor: 'move'
@@ -22,8 +22,8 @@ jQuery ->
         position = ui.item.index() # this will not work with paginated items, as the index is zero on every page
         $.ajax(
           type: 'POST'
-          url: '/categories/update_row_order'
+          url: '/books/update_row_order'
           dataType: 'json'
-          data: { category: {id: item_id, row_order_position: position } }
+          data: { recipe: {id: item_id, row_order_position: position } }
         )
     )

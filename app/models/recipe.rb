@@ -1,4 +1,7 @@
 class Recipe < ActiveRecord::Base
+  include RankedModel
+  ranks :row_order
+  
   belongs_to :user
   belongs_to :category
   
@@ -21,7 +24,7 @@ class Recipe < ActiveRecord::Base
   validates_attachment_content_type :recipe_image, :content_type => /\Aimage\/.*\Z/
   
   scope :active, -> { where(active: 1) }
-  
+   
   self.per_page = 5
  
   private

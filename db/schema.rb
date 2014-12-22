@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141031145819) do
+ActiveRecord::Schema.define(version: 20141218141049) do
 
   create_table "categories", force: true do |t|
     t.string   "name"
@@ -51,6 +51,7 @@ ActiveRecord::Schema.define(version: 20141031145819) do
     t.integer  "recipe_image_file_size"
     t.datetime "recipe_image_updated_at"
     t.integer  "active"
+    t.integer  "row_order"
   end
 
   create_table "users", force: true do |t|

@@ -1,7 +1,7 @@
 - @categories.each do |c|
   %h1= c.name
   %p{ :style => 'page-break-after:always;'}
-    - c.recipes.each do |r|
+    - c.recipes.active.order('row_order ASC').each do |r|
       %h2= r.title
       .show-divider
         %br

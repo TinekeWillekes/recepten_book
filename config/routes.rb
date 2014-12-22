@@ -16,7 +16,10 @@ ReceptenBoek::Application.routes.draw do
   get '/books/download_book'    => 'books#download_book'
   
   resources :recipes
-  resources :books
+  resources :books do
+    post :update_row_order, on: :collection
+  end
+  
   resources :categories do
     post :update_row_order, on: :collection
   end

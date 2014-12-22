@@ -76,26 +76,15 @@ class RecipesController < ApplicationController
              layout: 'layouts/application.pdf.haml',  # layout used
              orientation: 'Landscape',
              show_as_html: params[:debug].present?    # allow debuging
+      end
     end
   end
-    
-    # Load the html to convert to PDF
-    #pdf = File.read("#{Rails.root}/app/views/recipes/pdf.html.pdf.haml")
-    # Create a new kit and define page size to be US letter
-    #kit = PDFKit.new(pdf, :page_size => 'Letter')
-    # Load our stylesheet into the kit to have colors & formatting
-    #kit.stylesheets << "#{Rails.root}/app/assets/stylesheets/application.css"
-    # Save the html to a PDF file
-    # kit.to_file("#{Rails.root}/public/example.pdf")
-    # Render the html
-    # render :layout => 'pdf'
-  end
-  
+   
   private
 
   def recipe_params
     params.require(:recipe).permit(:id, :_destroy, :title, :directions, 
-      :number_of_persons, :cooking_time, :recipe_image, :tip, :history, :category_id,
+      :number_of_persons, :cooking_time, :recipe_image, :tip, :history, :category_id, :active, :row_order_position,
                                     :quantities_attributes => [:id, :_destroy, :amount, :recipe_id, :ingredient_id,
                                     :ingredient_attributes => [:id, :_destroy, :name]])
   end
@@ -106,6 +95,10 @@ class RecipesController < ApplicationController
   
   def sort_direction
     %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
+  end
+  
+  def set_recipe
+    @recipe = Recipe.find(params[:id])
   end
   
 end

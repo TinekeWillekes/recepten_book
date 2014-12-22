@@ -18,7 +18,7 @@
         <%= bootstrap_form_for(@recipe, :html => {:class => "form-horizontal"}) do |f| %>
           <div class="col-md-12">
             <div class="form-group">
-              <%= collection_select(:recipe, :category_id, Category.all, :id, :name, {prompt: "Select a category"}, {class: "form-control"} ) %>
+              <%= collection_select(:recipe, :category_id, Category.order('row_order ASC').all, :id, :name, {prompt: "Select a category"}, {class: "form-control"} ) %>
             </div>
           
             <%= f.text_field :title %>

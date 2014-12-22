@@ -14,18 +14,22 @@
       <div class="panel-body">
         Book list
       </div>
-       <% @categories.each do |c| %>
-      <table class="table table-striped table-bordered table-condensed table-hover">
+       
+      <table class="table table-bordered table-condensed table-hover" id="recipes">
+         <% @categories.each do |c| %>
          <tr>
            <th><%= c.name %></th>
          </tr> 
-          <% c.recipes.active.each do |recipe| %>
-         <tr>
-           <td><%= recipe.title %></td>
+          <% c.recipes.rank(:row_order).active.each do |recipe| %>
+         <tr data-item-id=<%= "#{recipe.id}" %> class="item">
+           <td style="text-indent:25px;"><%= recipe.title %></td>
          </tr> 
          <% end %>
+         <% end %>
        </table>
-      <% end %>
+     </div>
+     <div class="button-right">
+        <%= link_to("Save order", :books ) %>
      </div>
    </div>
 </div>
