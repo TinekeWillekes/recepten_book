@@ -15,22 +15,21 @@ class BooksController < ApplicationController
   
   def download_book
     @categories = current_user.categories.order('row_order ASC').all( :include => :recipes )
-      respond_to do |format|
-        format.html
-        format.pdf do
-          render pdf:           "Recepten boek",
-                 layout:        'layouts/application.pdf.haml',  # layout used
-                 orientation:   'Landscape',
-                 cover:         'Receptenboek',
-                 toc: {
-                                disable_dotted_lines: true,
-                                level_indentation: 5,
-                                header_text: 'Inhoudsopgave',
-                                },
-                 footer:        { :right => '[page]' },
-                 show_as_html:  params[:debug].present?    # allow debuging
-        end 
-      end
+      WickedPdf.new.pdf_from_string(
+        render pdf:    'Receptenboek',
+        footer:        { :content => render_to_string(:template => 'layouts/footer.pdf.erb')},
+        layout:        'layouts/application.pdf.erb',  # layout used
+        margin:        {:top => 10, :bottom =>10 },
+        orientation:   'Landscape',
+        cover:         render_to_string(:template => 'layouts/cover.pdf.erb'),
+        toc: {
+                       disable_dotted_lines: true,
+                       level_indentation: 5,
+                       header_text: 'Inhoudsopgave',
+                       },
+        show_as_html:  params[:debug].present? # allow debuging
+)
+      
   end
 
   private

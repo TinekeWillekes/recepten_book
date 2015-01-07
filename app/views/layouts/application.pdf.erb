@@ -1,0 +1,10 @@
+<html>
+  <head>
+    <%= wicked_pdf_stylesheet_link_tag "pdf" %>
+    <%= wicked_pdf_javascript_include_tag "http://code.jquery.com/jquery-1.10.0.min.js" %>
+    <%= wicked_pdf_javascript_include_tag "http://code.jquery.com/ui/1.10.3/jquery-ui.min.js" %>
+  </head>
+  <body>
+    <%= yield %>
+  </body>
+</html>

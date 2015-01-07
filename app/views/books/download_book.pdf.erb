@@ -1,0 +1,32 @@
+<% @categories.each do |c| %>
+  <h1><%= c.name %></h1>
+  <div class="page-break"></div>
+    <% c.recipes.active.order('row_order ASC').each do |r| %>
+      <h2><%= r.title %></h2>
+      <div class="show-divider">
+        <br /><br />
+      </div>
+      <div class="top-elements">
+        <div class="show-image">
+          <%= wicked_pdf_image_tag(r.recipe_image.url, size: "470x350") %>
+        </div>
+        <div class="background-paper">
+          <div class="list-ingredients">
+            <div id="header-text">
+              Boodschappenlijst:
+            </div>
+              <% r.quantities.each do |i| %>
+               <li><%= i.amount %> <%= i.ingredient.name %></li>
+              <% end %>
+          </div>
+        </div>
+      </div>
+        <div id="info">
+          <%= wicked_pdf_image_tag("icons/personen.png", size: "60") %><%= r.number_of_persons %> pers.<br /><br /><br />
+          <%= wicked_pdf_image_tag("icons/tijd.png", size: "60") %><%= r.cooking_time %> min.<br /><br /><br />
+          <%= wicked_pdf_image_tag("icons/tip.png", size: "60") %>Tip:<br />
+          <%= r.tip %>
+        </div>
+        <div class="page-break"></div>
+    <% end %> 
+<% end %>
