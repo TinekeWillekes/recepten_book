@@ -1,0 +1,35 @@
+<div class="row">
+  <div class="col-md-5">
+    <p><%= back_to(:books) %></p>
+  </div>
+  <div class="col-md-7">
+    <div id="head-title">Book information</div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-3"></div>
+  <div class="col-md-6">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4>Book information</h4>
+      </div>
+      <div class="panel-body">
+        <%= bootstrap_form_for(@book, :html => {:class => "form-horizontal"}) do |f| %>
+          <div class="col-md-12">
+            <%= f.text_field :title %>
+            <%= f.text_field :author %>
+            <%= f.text_field :year_of_publication %>
+            <%= f.text_area :foreword %>
+            <%= f.text_area :blurb %>
+
+          <div class="button-right">
+            <%= f.submit "Updated book information", class: "btn btn-primary" %>
+          </div>
+        <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  <div class="col-md-3"></div>
+</div>

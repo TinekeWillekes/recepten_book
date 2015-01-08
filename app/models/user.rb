@@ -6,4 +6,5 @@ class User < ActiveRecord::Base
        
   has_many :recipes
   has_many :categories
+  has_one :book
 end

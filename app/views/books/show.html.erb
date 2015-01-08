@@ -1,0 +1,18 @@
+<div class="row">
+  <div class="col-md-5">
+    <p><%= back_to(:books) %></p>
+  </div>
+  <div class="col-md-7">
+    <div id="head-title">Book information</div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-3"></div>
+  <div class="col-md-6">
+    <p><%=  @book.title %></p>
+    <p><%=  @book.author %></p>
+    <p><%=  @book.year_of_publication %></p>
+    <p><%=  @book.foreword %></p>
+    <p><%=  @book.blurb %></p>    
+  </div>
+</div>

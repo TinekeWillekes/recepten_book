@@ -20,7 +20,8 @@ class Recipe < ActiveRecord::Base
   validates :cooking_time, presence: true, numericality: true
   validates :directions, presence: true
   
-  has_attached_file :recipe_image, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "/images/recipe_images/missing.png"
+  has_attached_file :recipe_image, :styles => { :medium => "300x300>", :thumb => "100x100>" }, 
+                    :default_url => "/images/recipe_images/missing.png"
   validates_attachment_content_type :recipe_image, :content_type => /\Aimage\/.*\Z/
   
   scope :active, -> { where(active: 1) }

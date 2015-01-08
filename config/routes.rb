@@ -8,6 +8,7 @@ ReceptenBoek::Application.routes.draw do
       unauthenticated do
         root 'static_pages#home', as: :unauthenticated_root
       end
+      resource  :book
     end
 
   get '/recipes/:id/deactivate' => 'recipes#deactivate'
